@@ -29,7 +29,6 @@ public class MainActivity extends AppCompatActivity implements MainNav {
 
     @Override
     public void login() {
-        Log.d("TAG", "Click");
         mainViewModel.login(binding.email.getText().toString(), binding.pass.getText().toString());
     }
 
