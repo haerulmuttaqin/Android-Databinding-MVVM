@@ -27,6 +27,7 @@ public class MainViewModel extends ViewModel {
     }
 
     public void login(String email, String pass) {
+        Log.d("TAG2", "Click");
         if (email.equals(users.getName()) && pass.equals(users.getPass())) {
             mainNav.showLoginResult();
         } else {
@@ -35,7 +36,7 @@ public class MainViewModel extends ViewModel {
     }
 
    public void onLoginClick() {
-       Log.d("TAG", "OnLoginClick");
+       Log.d("TAG1", "OnLoginClick");
        mainNav.login();
    }
 
