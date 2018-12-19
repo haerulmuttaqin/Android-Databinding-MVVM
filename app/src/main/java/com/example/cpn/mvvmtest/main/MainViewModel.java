@@ -1,40 +1,45 @@
 package com.example.cpn.mvvmtest.main;
 
 import android.arch.lifecycle.ViewModel;
+import android.support.annotation.NonNull;
 import android.util.Log;
 
 import com.example.cpn.mvvmtest.User;
+import com.example.cpn.mvvmtest.api.ApiClient;
+import com.example.cpn.mvvmtest.api.ApiInterface;
+
+import retrofit2.Call;
+import retrofit2.Callback;
+import retrofit2.Response;
 
 public class MainViewModel extends ViewModel {
 
-    private User users;
     private MainNav mainNav;
+    private ApiInterface apiInterface;
 
-    public MainViewModel(MainNav mainNav) {
+    MainViewModel(MainNav mainNav) {
         this.mainNav = mainNav;
-        if (users == null) {
-            loadUsers();
-        }
-    }
-
-    public User getUsers() {
-        if (users == null) {
-            loadUsers();
-        }
-        return users;
-    }
-
-    private void loadUsers() {
-        users =  new User("test", "test");
+        apiInterface = ApiClient.getApiClient().create(ApiInterface.class);
     }
 
     public void login(String email, String pass) {
-        Log.d("TAG2", "Click");
-        if (email.equals(users.getEmail()) && pass.equals(users.getPassword())) {
-            mainNav.showLoginResult();
-        } else {
-            mainNav.handleLoginError();
-        }
+
+        Call<User> userCall = apiInterface.loginUser(email, pass);
+        userCall.enqueue(new Callback<User>() {
+            @Override
+            public void onResponse(@NonNull Call<User> call, @NonNull Response<User> response) {
+                Log.d("RESPONSE", response.message());
+                assert response.body() != null;
+                if (response.body().berhasil == 1) {
+                    mainNav.showLoginResult();
+                } else mainNav.handleLoginError();
+            }
+
+            @Override
+            public void onFailure(@NonNull Call<User> call, @NonNull Throwable t) {
+                mainNav.handleLoginError();
+            }
+        });
     }
 
    public void onLoginClick() {
