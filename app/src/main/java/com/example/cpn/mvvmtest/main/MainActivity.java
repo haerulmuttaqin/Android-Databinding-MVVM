@@ -1,4 +1,4 @@
-package com.example.cpn.mvvmtest;
+package com.example.cpn.mvvmtest.main;
 
 import android.arch.lifecycle.ViewModelProviders;
 import android.databinding.DataBindingUtil;
@@ -6,6 +6,7 @@ import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.widget.Toast;
 
+import com.example.cpn.mvvmtest.R;
 import com.example.cpn.mvvmtest.databinding.ActivityMainBinding;
 
 public class MainActivity extends AppCompatActivity implements MainNav {
