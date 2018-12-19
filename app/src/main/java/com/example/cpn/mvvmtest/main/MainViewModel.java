@@ -23,21 +23,23 @@ public class MainViewModel extends ViewModel {
     }
 
     public void login(String email, String pass) {
-
+        mainNav.showLoading();
         Call<User> userCall = apiInterface.loginUser(email, pass);
         userCall.enqueue(new Callback<User>() {
             @Override
             public void onResponse(@NonNull Call<User> call, @NonNull Response<User> response) {
+                mainNav.hideLoading();
                 Log.d("RESPONSE", response.message());
                 assert response.body() != null;
                 if (response.body().berhasil == 1) {
-                    mainNav.showLoginResult();
-                } else mainNav.handleLoginError();
+                    mainNav.showResult("Success");
+                } else mainNav.showResult("Error");
             }
 
             @Override
             public void onFailure(@NonNull Call<User> call, @NonNull Throwable t) {
-                mainNav.handleLoginError();
+                mainNav.hideLoading();
+                mainNav.showResult("Error");
             }
         });
     }
@@ -46,5 +48,4 @@ public class MainViewModel extends ViewModel {
        Log.d("TAG1", "OnLoginClick");
        mainNav.login();
    }
-
 }

@@ -33,5 +33,9 @@
             android:padding="10dp"
             android:text="@string/login"
             android:onClick="@{() -> viewModel.onLoginClick()}"/>
+        <ProgressBar
+            android:id="@+id/loading"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content" />
     </LinearLayout>
 </layout>

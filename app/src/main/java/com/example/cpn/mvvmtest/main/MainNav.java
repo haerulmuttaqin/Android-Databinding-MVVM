@@ -1,7 +1,8 @@
 package com.example.cpn.mvvmtest.main;
 
 public interface MainNav {
-    void handleLoginError();
+    void showLoading();
+    void hideLoading();
     void login();
-    void showLoginResult();
+    void showResult(String message);
 }

@@ -4,6 +4,7 @@ import android.arch.lifecycle.ViewModelProviders;
 import android.databinding.DataBindingUtil;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
+import android.view.View;
 import android.widget.Toast;
 
 import com.example.cpn.mvvmtest.R;
@@ -23,8 +24,8 @@ public class MainActivity extends AppCompatActivity implements MainNav {
     }
 
     @Override
-    public void handleLoginError() {
-        Toast.makeText(this, "Error", Toast.LENGTH_SHORT).show();
+    public void showLoading() {
+        binding.loading.setVisibility(View.VISIBLE);
     }
 
     @Override
@@ -36,7 +37,13 @@ public class MainActivity extends AppCompatActivity implements MainNav {
     }
 
     @Override
-    public void showLoginResult() {
-        Toast.makeText(this, "Success", Toast.LENGTH_SHORT).show();
+    public void hideLoading() {
+        binding.loading.setVisibility(View.INVISIBLE);
     }
+
+    @Override
+    public void showResult(String message) {
+        Toast.makeText(this, message, Toast.LENGTH_SHORT).show();
+    }
+
 }
