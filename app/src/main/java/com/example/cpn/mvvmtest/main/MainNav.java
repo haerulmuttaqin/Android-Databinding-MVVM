@@ -1,4 +1,4 @@
-package com.example.cpn.mvvmtest;
+package com.example.cpn.mvvmtest.main;
 
 public interface MainNav {
     void handleLoginError();

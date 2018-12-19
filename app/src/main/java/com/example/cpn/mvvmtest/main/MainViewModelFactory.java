@@ -1,4 +1,4 @@
-package com.example.cpn.mvvmtest;
+package com.example.cpn.mvvmtest.main;
 
 import android.arch.lifecycle.ViewModel;
 import android.arch.lifecycle.ViewModelProvider;

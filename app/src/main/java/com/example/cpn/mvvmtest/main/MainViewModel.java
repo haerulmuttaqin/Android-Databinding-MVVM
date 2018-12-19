@@ -1,7 +1,9 @@
-package com.example.cpn.mvvmtest;
+package com.example.cpn.mvvmtest.main;
 
 import android.arch.lifecycle.ViewModel;
 import android.util.Log;
+
+import com.example.cpn.mvvmtest.User;
 
 public class MainViewModel extends ViewModel {
 
@@ -28,7 +30,7 @@ public class MainViewModel extends ViewModel {
 
     public void login(String email, String pass) {
         Log.d("TAG2", "Click");
-        if (email.equals(users.getName()) && pass.equals(users.getPass())) {
+        if (email.equals(users.getEmail()) && pass.equals(users.getPassword())) {
             mainNav.showLoginResult();
         } else {
             mainNav.handleLoginError();

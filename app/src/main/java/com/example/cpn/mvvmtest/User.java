@@ -1,20 +1,28 @@
 package com.example.cpn.mvvmtest;
 
+import com.google.gson.annotations.Expose;
+import com.google.gson.annotations.SerializedName;
+
 public class User {
 
-    public final String name;
-    public final String pass;
+    @Expose
+    @SerializedName("email")
+    public final String email;
 
-    public User(String name, String pass) {
-        this.name = name;
-        this.pass = pass;
+    @Expose
+    @SerializedName("password")
+    public final String password;
+
+    public User(String email, String password) {
+        this.email = email;
+        this.password = password;
     }
 
-    public String getName() {
-        return pass;
+    public String getEmail() {
+        return email;
     }
 
-    public String getPass() {
-        return pass;
+    public String getPassword() {
+        return password;
     }
 }
