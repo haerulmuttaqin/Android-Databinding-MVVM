@@ -29,7 +29,10 @@ public class MainActivity extends AppCompatActivity implements MainNav {
 
     @Override
     public void login() {
-        mainViewModel.login(binding.email.getText().toString(), binding.pass.getText().toString());
+        mainViewModel.login(
+                binding.email.getText().toString(),
+                binding.password.getText().toString()
+        );
     }
 
     @Override
