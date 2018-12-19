@@ -17,14 +17,12 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:hint="@string/name"
-            android:autofillHints="@string/name"
             android:inputType="textEmailAddress" />
         <EditText
             android:id="@+id/pass"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:hint="@string/password"
-            android:autofillHints="@string/password"
             android:inputType="textPassword"/>
         <Button
             android:id="@+id/btnServerLogin"
